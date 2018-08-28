@@ -1,0 +1,28 @@
+{
+  "name": "simpleLogin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayorbin/simpleLogin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayorbin/simpleLogin/issues"
+  },
+  "homepage": "https://github.com/mayorbin/simpleLogin#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "captchapng": "^0.0.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mongodb": "^3.1.4"
+  }
+}

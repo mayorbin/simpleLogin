@@ -24,5 +24,8 @@ accountRouter.get('/vcode',accountCTRL.getVcode);
 //登录
 accountRouter.post('/login',accountCTRL.login);
 
+//退出
+accountRouter.get('/logout',accountCTRL.logout);
+
 //导出路由
 module.exports = accountRouter;

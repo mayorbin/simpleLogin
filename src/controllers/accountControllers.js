@@ -85,7 +85,19 @@ exports.login = (req, res) => {
         if (doc == null) {
             result.status = 2;
             result.message = '用户名或密码错误';
+        }else {
+            req.session.loginName = req.body.username;
         }
         res.json(result);
     })
+}
+
+/**
+ * 退出操作
+ */
+exports.logout = (req,res) => {
+    //清空session
+    req.session.loginName = null;
+
+    res.send(`<script>location = '/account/login';</script>`);
 }

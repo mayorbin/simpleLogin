@@ -39,9 +39,9 @@
                     <td>{{this.sex}}</td>
                     <td>{{this.phone}}</td>
                     <td>
-                        <a href="#" class="btn btn-success">编辑</a> |
+                        <a href="/studentmanager/edit/{{this._id}}" class="btn btn-success">编辑</a> |
 
-                        <input type="button" class="btn btn-danger" value="删除">
+                        <input type="button" onclick="deleteOne('{{this._id}}')" class="btn btn-danger" value="删除">
                     </td>
                 </tr>
                 {{/each}}
@@ -53,5 +53,12 @@
     //关键词搜索
     function search() {
         location = `/studentmanager/list?keyword=${$('#studentNameId').val()}`;
+    }
+
+    //删除
+    function deleteOne(_id) {
+        if (confirm('确认删除吗?')) {
+            location = `/studentmanager/delete/${_id}`;
+        }
     }
 </script> {{/block}}

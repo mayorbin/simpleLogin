@@ -1,15 +1,15 @@
-//导入模版
-const express = require('express');
+//导入模块
 const path = require('path');
+const express = require('express');
 
 //创建路由
-const studentManagerRouter = express.Router();
+const studentRouter = express.Router();
 
-//导入控件
-const studentManagerCTRL = require(path.join(__dirname,'../controllers/studentManagerController.js'));
+//导入控制器
+const studentCTRL = require(path.join(__dirname,'../controllers/studentManagerController.js'));
 
 //处理请求
-studentManagerRouter.get('/list',studentManagerCTRL.getStudentListPage);
+studentRouter.get('/list',studentCTRL.getListPage);
 
 //导出
-module.exports = studentManagerRouter;
+module.exports = studentRouter;

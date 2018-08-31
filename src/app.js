@@ -4,23 +4,27 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
-//创建app应用
+//创建应用
 const app = express();
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
 // Use the session middleware
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 600000 }}))
+app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: false, cookie: {maxAge: 60000}}));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}));
+
+// parse application/json
+app.use(bodyParser.json());
 
 //集成路由
-const accountRouter = require(path.join(__dirname,'./routers/accountRouter.js'));
-const studentManageRouter = require(path.join(__dirname,'./routers/studentmanagerRouter.js'));
+const accountRouter = require(path.join(__dirname, './routers/accountRouter.js'));
+app.use('/account', accountRouter);
 
-app.use('/account',accountRouter);
-app.use('/studentmanager',studentManageRouter);
+const studentRouter = require(path.join(__dirname,'./routers/studentmanagerRouter.js'));
+app.use('/studentmanager',studentRouter);
 
 //开启web服务
-app.listen(3000,'127.0.0.1',err => {
+app.listen(3000, '127.0.0.1', err => {
     if (err) {
         console.log(err);
         return;

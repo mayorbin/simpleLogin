@@ -57,32 +57,30 @@
     </div>
 </body>
 <script>
-    //跳转到注册页面
+    //跳转注册页面
     function register() {
         location = '/account/register';
     }
 
-    //点击随机生成验证码
+    //点击图片更新验证码
     $('#vcodeimgId').click(function (){
-        $('#vcodeimgId').attr('src',`/account/vcode?randomNum=${Math.random()}`);
+        $('#vcodeimgId').attr('src',`/account/vcode?random=${Math.random()}`);
     })
 
     //登录
     function login() {
-        var username = $('#usernameId').val();
-        var password = md5($('#passwordId').val() + '-_-');
-        var vcode = $('#vcodeId').val();
+        const username = $('#usernameId').val();
+        const password = md5($('#passwordId').val() + '-_-');
+        const vcode = $('#vcodeId').val();
 
-        $.post('/account/login', { username, password, vcode }, function (result) {
+        $.post('/account/login',{username,password,vcode},function (result){
             if (result.status != 0) {
-                //重新获取验证码
-                $('#vcodeimgId').attr('src',`/account/vcode?randomNum=${Math.random()}`);
+                $('#vcodeimgId').attr('src',`/account/vcode?random=${Math.random()}`);
                 alert(result.message);
             }else {
-                //跳转到列表页
                 location = '/studentmanager/list';
             }
-        });
+        })
     }
 </script>
 

@@ -41,18 +41,16 @@
 </body>
 <script>
     function register() {
-        //获取用户输入的信息
-        var username = $('#usernameId').val();
-        var password = md5($('#passwordId').val() + '-_-');
+        const username = $('#usernameId').val();
+        const password = md5($('#passwordId').val() + '-_-');
 
-        //发送请求
-        $.post('/account/register',{username, password},function (result){
+        $.post('/account/register', { username, password }, function (result) {
             if (result.status != 0) {
                 alert(result.message);
-            }else {
+            } else {
                 location = '/account/login';
             }
-        });
+        })
     }
 </script>
 
